@@ -1,0 +1,7 @@
+{
+  "name": "Chrome Extension Webpack",
+  "minimum_chrome_version": "10.0",
+  "devtools_page": "devtools.html",
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

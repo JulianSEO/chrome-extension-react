@@ -1,0 +1,33 @@
+{
+  "name": "chrome-extension-webpack",
+  "version": "0.0.1",
+  "description": "A boilerplate to chrome extension with webpack",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production  node utils/build.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server"
+  },
+  "dependencies": {
+    "@hot-loader/react-dom": "^16.8.6",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.3",
+    "cross-env": "^5.2.0",
+    "css-loader": "3.1.0",
+    "file-loader": "4.1.0",
+    "fs-extra": "8.1.0",
+    "html-loader": "0.5.5",
+    "html-webpack-plugin": "3.2.0",
+    "react-hot-loader": "^4.12.8",
+    "style-loader": "^0.23.1",
+    "webpack": "4.36.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "3.7.2",
+    "write-file-webpack-plugin": "4.5.0"
+  }
+}
