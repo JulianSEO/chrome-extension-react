@@ -1,5 +1,5 @@
 {
-  "name": "Chrome Extension Webpack",
+  "name": "Chrome Extension React",
   "minimum_chrome_version": "10.0",
   "devtools_page": "devtools.html",
   "browser_action": {

@@ -6,7 +6,7 @@ class Popup extends React.Component {
   render() {
     return (
       <div>
-        <p>Hello,sdfds find me on src/js/Popup/index.js</p>
+        <p>Hello, find me on src/js/Popup/index.js</p>
         <img src={icon} />
       </div>
     );

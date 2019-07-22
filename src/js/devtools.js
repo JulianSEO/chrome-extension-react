@@ -4,7 +4,7 @@ import React from "react";
 import { render } from "react-dom";
 
 chrome.devtools.panels.create(
-  "My Panell",
+  "My Panel",
   "icon-128.png",
   "devtools.html",
   panel => {

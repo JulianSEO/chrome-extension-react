@@ -6,7 +6,7 @@ class Devtools extends React.Component {
   render() {
     return (
       <div>
-        <p>Hello,Dennis find me on src/js/Devtools/index.js</p>
+        <p>Hello, find me on src/js/Devtools/index.js</p>
         <img src={icon} />
       </div>
     );
