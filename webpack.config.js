@@ -1,59 +1,57 @@
-const webpack = require("webpack")
-const path = require("path")
-const fileSystem = require("fs")
-const CopyWebpackPlugin = require("copy-webpack-plugin")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
-const WriteFilePlugin = require("write-file-webpack-plugin")
-const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const webpack = require("webpack");
+const path = require("path");
+const fileSystem = require("fs");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WriteFilePlugin = require("write-file-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   mode: process.env.NODE_ENV || "development",
   entry: {
     devtools: path.join(__dirname, "src", "js", "devtools.js"),
     background: path.join(__dirname, "src", "js", "background.js"),
+    popup: path.join(__dirname, "src", "js", "popup.js")
   },
   output: {
     path: path.join(__dirname, "build"),
-    filename: "[name].bundle.js",
+    filename: "[name].bundle.js"
   },
   devtool: "cheap-module-source-map",
+  resolve: {
+    alias: { "react-dom": "@hot-loader/react-dom" }
+  },
   devServer: {
     hot: true,
     contentBase: path.join(__dirname, "../build"),
     headers: { "Access-Control-Allow-Origin": "*" },
     disableHostCheck: true,
-    port: process.env.port || 3000,
+    port: process.env.port || 3000
   },
   module: {
     rules: [
       {
         test: /\.css$/,
         loader: "style-loader!css-loader",
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.(jpg|jpeg|png|gif|eot|otf|svg|ttf|woff|woff2)$/,
         loader: "file-loader?name=[name].[ext]",
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.html$/,
         loader: "html-loader",
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.(js|jsx)$/,
         loader: "babel-loader",
-        exclude: /node_modules/,
-      },
-    ],
+        exclude: /node_modules/
+      }
+    ]
   },
-  // resolve: {
-  //   alias: alias,
-  //   extensions: fileExtensions
-  //     .map(extension => "." + extension)
-  //     .concat([".js", ".css"]),
-  // },
   plugins: [
     // clean the build folder
     new CleanWebpackPlugin(),
@@ -68,17 +66,23 @@ module.exports = {
             JSON.stringify({
               description: process.env.npm_package_description,
               version: process.env.npm_package_version,
-              ...JSON.parse(content.toString()),
+              ...JSON.parse(content.toString())
             })
-          )
-        },
-      },
+          );
+        }
+      }
     ]),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "devtools.html"),
+      template: path.join(__dirname, "src/html", "devtools.html"),
       filename: "devtools.html",
-      chunks: ["devtools"],
+      chunks: ["devtools"]
     }),
-    new WriteFilePlugin(),
-  ],
-}
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "src/html", "popup.html"),
+      filename: "popup.html",
+      chunks: ["popup"]
+    }),
+
+    new WriteFilePlugin()
+  ]
+};

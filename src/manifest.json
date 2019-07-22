@@ -2,6 +2,10 @@
   "name": "Chrome Extension Webpack",
   "minimum_chrome_version": "10.0",
   "devtools_page": "devtools.html",
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Open the popup"
+  },
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
